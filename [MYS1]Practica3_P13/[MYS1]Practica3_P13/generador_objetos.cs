@@ -112,6 +112,7 @@ namespace _MYS1_Practica3_P13
             set_tasa_source("So_Metropolitana", "Random.Poisson(2)");
             createServer("Se_Metropolitana", 0+5, 0);
             set_tasa_server("Se_Metropolitana", "Random.Exponential(4)");
+            set_capacidad_server("Se_Metropolitana", "200");
             createPath(get_multi_Nodo("So_Metropolitana", 0), get_multi_Nodo("Se_Metropolitana", 0));
             createTransferNode("TN_Metropolitana", 0 + 5, -5);
             set_propiedad("TN_Metropolitana", "OutboundLinkRule", "ByLinkWeight");
@@ -130,6 +131,7 @@ namespace _MYS1_Practica3_P13
             set_tasa_source("So_Norte", "Random.Poisson(8)");
             createServer("Se_Norte",5+5, -20);
             set_tasa_server("Se_Norte", "Random.Exponential(5)");
+            set_capacidad_server("Se_Norte", "50");
             createPath(get_multi_Nodo("So_Norte", 0), get_multi_Nodo("Se_Norte", 0));
             createTransferNode("TN_Norte", 5 + 5, -25);
             set_propiedad("TN_Norte", "OutboundLinkRule", "ByLinkWeight");
@@ -139,6 +141,7 @@ namespace _MYS1_Practica3_P13
             set_tasa_source("So_Nor_oriente", "Random.Poisson(6)");
             createServer("Se_Nor_oriente", 30+5 , -14);
             set_tasa_server("Se_Nor_oriente", "Random.Exponential(3)");
+            set_capacidad_server("Se_Nor_oriente", "40");
             createPath(get_multi_Nodo("So_Nor_oriente", 0), get_multi_Nodo("Se_Nor_oriente", 0));
             createTransferNode("TN_Nor_oriente", 30 + 10, -19);
             set_propiedad("TN_Nor_oriente", "OutboundLinkRule", "ByLinkWeight");
@@ -148,6 +151,7 @@ namespace _MYS1_Practica3_P13
             set_tasa_source("So_Sur_oriente", "Random.Poisson(10)");
             createServer("Se_Sur_oriente", 15, 20-5);
             set_tasa_server("Se_Sur_oriente", "Random.Exponential(4)");
+            set_capacidad_server("Se_Sur_oriente", "30");
             createPath(get_multi_Nodo("So_Sur_oriente", 0), get_multi_Nodo("Se_Sur_oriente", 0));
             createTransferNode("TN_Sur_oriente", 15, 20-10);
             set_propiedad("TN_Sur_oriente", "OutboundLinkRule", "ByLinkWeight");
@@ -157,6 +161,7 @@ namespace _MYS1_Practica3_P13
             set_tasa_source("So_central", "Random.Poisson(3)");
             createServer("Se_central", -15+5, 20-5);
             set_tasa_server("Se_central", "Random.Exponential(5)");
+            set_capacidad_server("Se_central", "100");
             createPath(get_multi_Nodo("So_central", 0), get_multi_Nodo("Se_central", 0));
             createTransferNode("TN_central", -15+5, 20-10);
             set_propiedad("TN_central", "OutboundLinkRule", "ByLinkWeight");
@@ -166,6 +171,7 @@ namespace _MYS1_Practica3_P13
             set_tasa_source("So_Sur_occidente", "Random.Poisson(4)");
             createServer("Se_Sur_occidente", -40+10 + 5, 10-5);
             set_tasa_server("Se_Sur_occidente", "Random.Exponential(3)");
+            set_capacidad_server("Se_Sur_occidente", "120");
             createPath(get_multi_Nodo("So_Sur_occidente", 0), get_multi_Nodo("Se_Sur_occidente", 0));
             createTransferNode("TN_Sur_occidente", -40 + 10+5, 10-10);
             set_propiedad("TN_Sur_occidente", "OutboundLinkRule", "ByLinkWeight");
@@ -183,6 +189,7 @@ namespace _MYS1_Practica3_P13
             set_tasa_source("So_Nor_occidente", "Random.Poisson(12)");
             createServer("Se_Nor_occidente", -40+15, -20);
             set_tasa_server("Se_Nor_occidente", "Random.Exponential(6)");
+            set_capacidad_server("Se_Nor_occidente", "30");
             createPath(get_multi_Nodo("So_Nor_occidente", 0), get_multi_Nodo("Se_Nor_occidente", 0));
             createTransferNode("TN_Nor_occidente", -40 + 15, -25);
             set_propiedad("TN_Nor_occidente", "OutboundLinkRule", "ByLinkWeight");
@@ -192,6 +199,7 @@ namespace _MYS1_Practica3_P13
             set_tasa_source("So_Peten", "Random.Poisson(4)");
             createServer("Se_Peten",  10+5, -50);
             set_tasa_server("Se_Peten", "Random.Exponential(4)");
+            set_capacidad_server("Se_Peten", "150");
             createPath(get_multi_Nodo("So_Peten", 0), get_multi_Nodo("Se_Peten", 0));
             createTransferNode("TN_Peten", 10+5, -45);
             set_propiedad("TN_Peten", "OutboundLinkRule", "ByLinkWeight");
@@ -318,6 +326,11 @@ namespace _MYS1_Practica3_P13
         public void set_tasa_server(string nombre, string tasa)
         {
             set_propiedad(nombre, "ProcessingTime", tasa);
+        }
+
+        public void set_capacidad_server(string nombre, string capacidad)
+        {
+            set_propiedad(nombre, "InitialCapacity", capacidad);
         }
 
         public void createSink(string nombre, int x, int y)

@@ -32,7 +32,9 @@ namespace _MYS1_Practica3_P13
 
         private void crear_carnets_Click(object sender, EventArgs e)
         {
-
+            generador_carnets gen_car = new generador_carnets();
+            gen_car.crearModelo();
+            MessageBox.Show("Modelo creado con éxito.");
         }
     }
 }
